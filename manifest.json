@@ -7,11 +7,11 @@
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "css": ["jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.css", "main.css"],
+        "css": ["jquery-ui-1.10.4/css/custom-theme/jquery-ui-1.10.4.custom.css", "main.css"],
         "js": ["jquery-ui-1.10.4/js/jquery-1.10.2.js", "jquery-ui-1.10.4/js/jquery-ui-1.10.4.js", "contentscript.js"]
     }],
     "web_accessible_resources": [
-        "jquery-ui-1.10.4/css/ui-lightness/images/*.png"
+        "jquery-ui-1.10.4/css/custom-theme/images/*.png"
     ],
     "commands": {
         "toggle-command-bar": {
