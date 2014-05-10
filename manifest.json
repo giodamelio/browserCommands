@@ -1,0 +1,17 @@
+{
+    "name": "Browser Commands",
+    "description" : "Quick Javascript browser commands using Chromes omnibox",
+    "version": "0.1.0",
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "commands": {
+        "open-command-bar": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E"
+            },
+            "description": "Open the command bar"
+        }
+    },
+    "manifest_version": 2
+}
