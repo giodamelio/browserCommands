@@ -15,3 +15,12 @@
     /* Make sure it is on top */
     z-index:1000;
 }
+
+ul.ui-autocomplete {
+    border-radius: 0px !important;
+}
+
+li.ui-menu-item > a {
+    font-size: 20px;
+    border-radius: 0px !important;
+}
