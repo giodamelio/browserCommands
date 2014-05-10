@@ -5,8 +5,13 @@
     "background": {
         "scripts": ["background.js"]
     },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "css": ["jquery-ui-1.10.4/css/ui-lightness/jquery-ui-1.10.4.min.css", "main.css"],
+        "js": ["jquery-ui-1.10.4/js/jquery-1.10.2.js", "jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js", "contentscript.js"]
+    }],
     "commands": {
-        "open-command-bar": {
+        "toggle-command-bar": {
             "suggested_key": {
                 "default": "Ctrl+Shift+E"
             },
