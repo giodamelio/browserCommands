@@ -1,29 +1,9 @@
 var isCommandBarOpen = false;
 
 // Autocomplete
-var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
+var commands = [
+    { id: 1, name: "Make background red", script: "$('*').css('background', 'red');" },
+    { id: 2, name: "Make background blue", script: "$('*').css('background', 'blue');"}
 ];
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -41,9 +21,30 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
             // Setup autocomplete
             command_bar.autocomplete({
-                source: availableTags,
                 delay: 0,
-                autoFocus: true
+                autoFocus: true,
+                source: function(request, response) {
+                    response(
+                        commands.filter(function(value) {
+                            return value.name.indexOf(request.term) > -1
+                        }).map(function(value) {
+                            return {
+                                label: value.name,
+                                id: value.id
+                            }
+                        })
+                    );
+                },
+                select: function(event, ui) {
+                    // Exacute the command
+                    commands.map(function(value) {
+                        if (value.id == ui.item.id) {
+                            eval(value.script);
+                        }
+                        // Remove the commandbar
+                        $("input.command_bar").remove();
+                    })
+                }
             });
         } else {
             // Close the command bar
