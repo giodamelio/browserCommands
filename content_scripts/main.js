@@ -79,7 +79,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 select: function(event, ui) {
                     if (ui.item.option) {
                         // Perform the option
-                        console.log(ui.item);
+                        if (ui.item.option == "add_command") {
+                            addScript();
+                        }
                     } else {
                         // Exacute the command
                         eval(ui.item.script);
