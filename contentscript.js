@@ -1,11 +1,6 @@
 var isCommandBarOpen = false;
 
-// Autocomplete
-var commands = [
-    { id: 1, name: "Make background red", script: "$('*').css('background', 'red');" },
-    { id: 2, name: "Make background blue", script: "$('*').css('background', 'blue');"}
-];
-
+// Setup the command bar
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.command == "toggle-command-bar") {
         // Toggle the command bar
@@ -23,27 +18,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             command_bar.autocomplete({
                 delay: 0,
                 autoFocus: true,
-                source: function(request, response) {
-                    response(
-                        commands.filter(function(value) {
-                            return value.name.indexOf(request.term) > -1
-                        }).map(function(value) {
+                source: function(request, autocomplete) {
+                    // Autocomplete
+                    chrome.runtime.sendMessage({command: "autocomplete", text: request.term}, function(response) {
+                        autocomplete(response.map(function(value) {
                             return {
-                                label: value.name,
-                                id: value.id
-                            }
-                        })
-                    );
+                                ID: value.ID,
+                                value: value.name,
+                                script: value.script
+                            };
+                        }));
+                    });
+                    
                 },
                 select: function(event, ui) {
                     // Exacute the command
-                    commands.map(function(value) {
-                        if (value.id == ui.item.id) {
-                            eval(value.script);
-                        }
-                        // Remove the commandbar
-                        $("input.command_bar").remove();
-                    })
+                    eval(ui.item.script);
+                    $("input.command_bar").remove();
                 }
             });
         } else {
