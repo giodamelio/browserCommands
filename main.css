@@ -28,3 +28,12 @@ li.ui-menu-item > a {
 li.ui-autocomplete-category {
     font-weight: bold;
 }
+
+label, input, textarea {
+    display:block;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}

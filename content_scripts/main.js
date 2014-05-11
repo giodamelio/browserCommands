@@ -80,7 +80,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     if (ui.item.option) {
                         // Perform the option
                         if (ui.item.option == "add_command") {
-                            addScript();
+                            addCommand();
                         }
                     } else {
                         // Exacute the command
