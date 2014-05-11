@@ -11,6 +11,7 @@
         "js": [
             "jquery-ui-1.10.4/js/jquery-1.10.2.js",
             "jquery-ui-1.10.4/js/jquery-ui-1.10.4.js",
+            "ractive/ractive.min.js",
             "content_scripts/options.js",
             "content_scripts/main.js"
         ]
