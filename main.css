@@ -24,3 +24,7 @@ li.ui-menu-item > a {
     font-size: 20px;
     border-radius: 0px !important;
 }
+
+li.ui-autocomplete-category {
+    font-weight: bold;
+}
