@@ -1,25 +1,16 @@
 {
     "name": "Browser Commands",
-    "description" : "Quick Javascript browser commands using Chromes omnibox",
+    "description" : "Quick Javascript browser commands",
     "version": "0.1.0",
     "background": {
-        "scripts": ["localStorageDB/localstoragedb.js", "background/background.js"]
+        "scripts": []
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "css": ["jquery-ui-1.10.4/css/custom-theme/jquery-ui-1.10.4.custom.css", "main.css"],
-        "js": [
-            "jquery-ui-1.10.4/js/jquery-1.10.2.js",
-            "jquery-ui-1.10.4/js/jquery-ui-1.10.4.js",
-            "ractive/ractive.min.js",
-            "content_scripts/options.js",
-            "content_scripts/main.js"
-        ]
+        "css": [],
+        "js": []
     }],
-    "web_accessible_resources": [
-        "jquery-ui-1.10.4/css/custom-theme/images/*.png",
-        "templates/*.html"
-    ],
+    "web_accessible_resources": [],
     "commands": {
         "toggle-command-bar": {
             "suggested_key": {
